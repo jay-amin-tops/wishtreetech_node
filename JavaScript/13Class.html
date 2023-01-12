@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>data member without _,# is public</p>
+    <p>data member without _ protected</p>
+    <p>data member without # private</p>
+    
+    <script>
+        class MathOP{
+            publicDM = "PublicDM"
+            _protectedDM = "_protectedDM"
+            #privateDM = "privateDM"
+            addition(a,b) {
+                console.log("parent public DM",this.publicDM );
+                console.log("parent protected DM",this._protectedDM );
+                console.log("parent private DM",this.#privateDM  );
+                return a+b
+            }
+        }
+        class AdvMathOP extends MathOP{
+            average(p,q) {
+                console.log("Child public DM",this.publicDM );
+                console.log("Child protected DM",this._protectedDM );
+                // console.log("Child private DM",this.#privateDM );
+                // let sum = this.addition(p,q)
+                // return sum/2
+            }
+        }
+        let MathOPOb = new AdvMathOP 
+        // console.log(addition(505,60));
+        // console.log(MathOPOb.addition(505,60));
+        console.log(MathOPOb.average(505,60));
+        // console.log(MathOPOb.publicDM);
+        // console.log(MathOPOb._protectedDM);
+        // console.log(MathOPOb.#privateDM);
+        
+    </script>
+</body>
+</html>

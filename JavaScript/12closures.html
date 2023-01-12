@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>JavaScript variables can belong to the local or global scope.</p>
+    <p>Global variables can be made local (private) with closures.</p>
+    <script>
+        function myfunction(params) {
+            let username = "Testing"
+            console.log("called");
+            // console.log(username);
+            function displayName() {
+                console.log(username); 
+                return username
+            }
+            // displayName()
+            return displayName
+        }
+        let res = myfunction()()
+        console.log(res);
+    </script>
+    
+</body>
+</html>
+
