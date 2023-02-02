@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="section-content">
+        <dl>
+            <dt id="callbackfn"><code>callbackFn</code></dt>
+            <dd>
+                <p>A function to execute for each element in the array. It should return a <a
+                        href="/en-US/docs/Glossary/Truthy">truthy</a> to keep the element in the resulting array, and a
+                    falsy value otherwise.</p>
+                <p>The function is called with the following arguments:</p>
+                <dl>
+                    <dt id="element"><code>element</code></dt>
+                    <dd>
+                        <p>The current element being processed in the array.</p>
+                    </dd>
+                    <dt id="index"><code>index</code></dt>
+                    <dd>
+                        <p>The index of the current element being processed in the array.</p>
+                    </dd>
+                    <dt id="array"><code>array</code></dt>
+                    <dd>
+                        <p>The array <code>filter()</code> was called upon.</p>
+                    </dd>
+                </dl>
+            </dd>
+            <dt id="thisarg"><code>thisArg</code> <span class="badge inline optional">Optional</span></dt>
+            <dd>
+                <p>A value to use as <code>this</code> when executing <code>callbackFn</code>. See <a
+                        href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#iterative_methods">iterative
+                        methods</a>.</p>
+            </dd>
+        </dl>
+    </div>
+    <script>
+        const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+        const result = words.filter(word => word.length > 6);
+
+        console.log(result);
+    </script>
+</body>
+
+</html>
