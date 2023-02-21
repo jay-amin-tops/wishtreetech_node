@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="APP">
+<head>
+    <meta charset="UTF-8">
+    <title>angular file upload</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+        {{!-- <form method='post' onsubmit="event.preventDefault(); uploadfile();" enctype="multipart/form-data"> --}}
+        <form method='post' id="form-for-image"  onsubmit="event.preventDefault(); uploadfile();" enctype="multipart/form-data">
+        <input type='file' id="profilePic" name='profilePic'>
+        <input type="text" name="username" id="username">
+        <img src="./images/filename.jpg" id="preview" width="150px" alt="no">
+        <input type='submit'>
+        <script>
+            function uploadfile(){
+                var form = $('#form-for-image').serializeArray();  
+
+                console.log($("#profilePic"))
+                console.log(form)
+                var result = { };
+
+                //$.each($('form').serializeArray(), function() {
+                //    result[this.name] = this.value;
+                //});
+                
+                console.log(result)
+                return false
+                const formData = new FormData();
+                formData.append('image', $('input[type=file]')[0].files[0]); 
+                fetch('http://localhost:8000/upload', {
+                    method: 'POST', // or 'PUT'
+                    body:formData,
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        $("#preview").attr('src',`./images/${data.filename}`)
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+                console.log("form data",formData)
+                //var FormData = new FormData();
+                //console.log("form data",FormData)
+                alert("called")
+                console.log("called")
+            }
+        </script>
+ </body>
+</html>

@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "8728e86c-14fc-4295-a59e-59c8f2d488b0",
+		"name": "LiveApiLoginRegist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24804367"
+	},
+	"item": [
+		{
+			"name": "login get method",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://justjayapi.000webhostapp.com/login?username=admin&password=123",
+					"protocol": "https",
+					"host": [
+						"justjayapi",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "admin"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						}
+					]
+				},
+				"description": "https://justjayapi.000webhostapp.com/login?username=admin&password=123"
+			},
+			"response": []
+		},
+		{
+			"name": "registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"testing\",\"password\":\"123\",\"gender\":\"Male\",\"email\":\"mail@mail.com\",\"mobile\":\"9879879878\"}"
+				},
+				"url": {
+					"raw": "https://justjayapi.000webhostapp.com/registration?username=admin&password=123",
+					"protocol": "https",
+					"host": [
+						"justjayapi",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"registration"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "admin"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						}
+					]
+				},
+				"description": "https://justjayapi.000webhostapp.com/registration?username=admin&password=123"
+			},
+			"response": []
+		}
+	]
+}
