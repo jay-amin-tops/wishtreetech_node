@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+     {{>headerfile}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+
+        <div class="card">
+            <div class="card-header">Registration</div>
+            <div class="card-body">
+                <form id="regist-form" onsubmit="event.preventDefault(); savedata()" method="post">
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Enter User Name" name="username" id="username">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="text" class="form-control" name="password" id="password">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="email" class="form-control" name="email" id="email">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="tel" class="form-control" name="mobile" id="mobile">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="submit" name="save" value="Register" id="save">
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script>
+            function savedata(){
+                console.log("Called") 
+                var result = { };
+                $.each($('#regist-form').serializeArray(), function() {
+                    result[this.name] = this.value;
+                });
+                console.log("FormData",result) 
+                fetch('http://localhost:3000/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(result)
+                }).then(res => res.json())
+                .then(res => console.log(res));
+                //fetch("http://localhost:3000/register",{
+                //    method: "POST",
+                //    'Content-Type': 'application/json',
+                //    body: JSON.stringify(result) 
+                //}).then((res)=>res.json()).then((response)=>{
+                //    console.log("response",response) 
+                //})
+            }
+        </script>
+    </div>
+</body>
+
+</html>
